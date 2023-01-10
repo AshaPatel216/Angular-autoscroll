@@ -10,7 +10,7 @@ body {
 my-app {
   display: block;
   box-sizing: border-box;
-  padding: 30px;
+  padding: 50px;
 }
 
 my-app > .k-icon.k-i-loading {
