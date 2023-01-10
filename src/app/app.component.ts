@@ -4,9 +4,9 @@ import { Component, HostListener, ViewEncapsulation } from '@angular/core';
     selector: 'my-app',
     encapsulation: ViewEncapsulation.None,
     template: `
-   <div>
-   <div>
-    
+   
+    <div style="height: 300px; width: 300px; overflow: auto" id="container">
+    <div class="container-fluid" style="width: ;">
    <kendo-sortable
    [kendoSortableBinding]="palettes"
    [itemStyle]="{'float':'left', 'display': 'inline-block',
@@ -76,30 +76,22 @@ export class AppComponent {
       onMouseMove(event) {
       let element =  document.getElementById('container');
     
-      console.log("Window Inner Height: " + window.innerHeight);
-      console.log("Client Y: " + event.clientY);
+      
         if (this.isDetectDrag) {
-          if (window.innerHeight < (event.clientY)) {
-              window.scroll(0, 50);
-            //element.scrollTop += 5;
+          if (element.clientHeight < (event.clientY)) {
+            element.scrollTop += 5;
           }
     
-          if (window.innerHeight > (event.clientY)) {
-            window.scrollTo({
-                behavior: 'smooth',
-                top: event.clientY
-              });
-           // element.scrollTop -= 5;
+          if (element.clientHeight > (event.clientY)) {
+            element.scrollTop -= 5;
           } 
           
-          if (window.innerWidth < (event.clientX)) {
-            window.scroll(0,0);
-            // element.scrollLeft += 5;
+          if (element.clientWidth < (event.clientX)) {
+            element.scrollLeft += 5;
           }
     
-          if (window.innerWidth > (event.clientX)) {
-            window.scroll(0,0);
-            // element.scrollLeft -= 10;
+          if (element.clientWidth > (event.clientX)) {
+            element.scrollLeft -= 10;
           } 
         
         }
